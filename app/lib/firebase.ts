@@ -4,15 +4,12 @@ import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyAO5xXd3NKoM-i5PADj1OEYnDJxeKT8CGc",
-    authDomain: "lost-and-found-ef176.firebaseapp.com",
-    projectId: "lost-and-found-ef176",
-
-    // ✅ MUST be appspot.com (NOT firebasestorage.app)
-    storageBucket: "lost-and-found-ef176.appspot.com",
-
-    messagingSenderId: "262037355163",
-    appId: "1:262037355163:web:903ac6f68cdc9de1f2243e",
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY!,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN!,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID!,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET!,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID!,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID!,
 };
 
 const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
