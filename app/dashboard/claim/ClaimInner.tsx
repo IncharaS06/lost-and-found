@@ -36,7 +36,7 @@ function getLocation(item: AnyItem) {
   return item.lastSeenLocation || item.foundLocation || "";
 }
 
-export default function ClaimClient() {
+export default function ClaimInner() {
   const router = useRouter();
   const sp = useSearchParams();
 
@@ -235,15 +235,31 @@ export default function ClaimClient() {
         {(isMobile ? particles.slice(0, 8) : particles).map((p, i) => (
           <div
             key={i}
-            className={cn("absolute rounded-full bg-green-500/20 animate-float", isMobile ? "h-0.5 w-0.5" : "h-1 w-1")}
-            style={{ left: p.left, top: p.top, animationDelay: p.delay, animationDuration: p.duration }}
+            className={cn(
+              "absolute rounded-full bg-green-500/20 animate-float",
+              isMobile ? "h-0.5 w-0.5" : "h-1 w-1"
+            )}
+            style={{
+              left: p.left,
+              top: p.top,
+              animationDelay: p.delay,
+              animationDuration: p.duration,
+            }}
           />
         ))}
       </div>
 
       <div className="max-w-xl mx-auto relative">
-        <div className={cn("flex items-center justify-between mb-5 transition-all duration-700 ease-out", mounted ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2")}>
-          <button onClick={() => router.back()} className="inline-flex items-center gap-2 text-white/70 hover:text-white transition active:scale-95">
+        <div
+          className={cn(
+            "flex items-center justify-between mb-5 transition-all duration-700 ease-out",
+            mounted ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2"
+          )}
+        >
+          <button
+            onClick={() => router.back()}
+            className="inline-flex items-center gap-2 text-white/70 hover:text-white transition active:scale-95"
+          >
             <ArrowLeft className="h-4 w-4" />
             Back
           </button>
@@ -315,7 +331,9 @@ export default function ClaimClient() {
             disabled={submitting || !proofOk}
             className={cn(
               "mt-4 w-full rounded-xl py-3 font-semibold transition active:scale-[0.99]",
-              submitting || !proofOk ? "bg-green-900/40 text-white/40 cursor-not-allowed" : "bg-green-500 hover:bg-green-400 text-black"
+              submitting || !proofOk
+                ? "bg-green-900/40 text-white/40 cursor-not-allowed"
+                : "bg-green-500 hover:bg-green-400 text-black"
             )}
           >
             {submitting ? "Submitting..." : "Submit Claim"}
