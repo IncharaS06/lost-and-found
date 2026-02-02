@@ -1,6 +1,6 @@
 import dynamic from "next/dynamic";
 
-const ClaimClient = dynamic(() => import("./ClaimClient"), {
+const ClaimClient = dynamic(() => import("./ClaimInner"), {
   ssr: false,
   loading: () => (
     <div className="min-h-screen bg-black flex items-center justify-center text-white/60 text-sm">
@@ -12,3 +12,4 @@ const ClaimClient = dynamic(() => import("./ClaimClient"), {
 export default function Page() {
   return <ClaimClient />;
 }
+
